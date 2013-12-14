@@ -1,0 +1,32 @@
+import game
+import polygon
+import config
+import pygame
+
+ 
+
+class AstroidsGame(game.Game):
+    def __init__(self):
+        game.Game.__init__(self, 'Astroids', 640, 480)
+    def paint(self, surface):
+        surface.fill((0,0,0))
+        self.polygon.paint(surface)
+
+    def game_logic(self,keys, newkeys):
+        if pygame.K_UP in newkeys:
+            self.Polygon.up()
+        elif pygame.K_DOWN in newkeys:
+            self.Polygon.down()
+        elif pygame.K_LEFT in newkeys:
+            self.Polygon.left()
+        elif pygame.K_RIGHT in newkeys:
+            self.Polygon.right()
+        self.polygon.move()
+        pass
+
+
+def main():
+    g = AstroidsGame()
+    g.main_loop()
+
+main()
